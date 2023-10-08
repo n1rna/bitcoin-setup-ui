@@ -1,0 +1,36 @@
+{
+  "name": "hodl-diag",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@nextui-org/button": "^2.0.21",
+    "@nextui-org/card": "^2.0.21",
+    "@nextui-org/react": "^2.1.13",
+    "@nextui-org/system": "^2.0.10",
+    "@nextui-org/theme": "^2.1.9",
+    "framer-motion": "^10.16.4",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-flow": "^1.0.3",
+    "react-flow-renderer": "^10.3.17",
+    "react-icons": "^4.11.0",
+    "reactflow": "^11.9.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3"
+  }
+}
