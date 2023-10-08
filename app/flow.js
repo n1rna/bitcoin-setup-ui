@@ -51,7 +51,6 @@ const OverviewFlow = () => {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
-          onInit={onInit}
           fitView
           attributionPosition="top-right"
           className="react-flow-subflows-example"
