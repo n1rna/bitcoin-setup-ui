@@ -74,7 +74,13 @@ export const nodes = [
   ...Swimlanes,
 
   // -- Nodes
-
+  {
+    id: "0-buyBitcoin",
+    data: { label: "Buy Bitcoin" },
+    position: { x: 50, y: 360 },
+    parentNode: L_buyLane.id,
+    ...defaultNodeProps,
+  },
   {
     id: "0-acquireBitcoin",
     data: { label: "Acquire Bitcoin" },
@@ -90,19 +96,26 @@ export const nodes = [
     ...defaultNodeProps,
   },
   {
-    id: "2-prepareEnvironment",
-    data: { label: "Prepare your environment" },
+    id: "2-acquireHWW",
+    data: { label: "Acquire a hardware wallet" },
     position: { x: 50, y: 180 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
   {
-    id: "3-installWallet",
-    data: { label: "Install a software wallet on your device" },
-    position: { x: 50, y: 100 },
-    parentNode: L_setupWalletLane.id,
+    id: "3-prepareEnvironment",
+    data: { label: "Prepare your environment" },
+    position: { x: 50, y: 260 },
+    parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
+  // {
+  //   id: "3-installWallet",
+  //   data: { label: "Install a software wallet on your device" },
+  //   position: { x: 50, y: 100 },
+  //   parentNode: L_setupWalletLane.id,
+  //   ...defaultNodeProps,
+  // },
   {
     id: "4-createWallet",
     data: { label: "Create a wallet (+ passphrase)" },
@@ -145,25 +158,25 @@ export const edges = [
   {
     id: "e1-2",
     source: "1-chooseDevice",
-    target: "2-prepareEnvironment",
+    target: "2-acquireHWW",
     sourceHandle: "bottom-source",
     targetHandle: "top-target",
     animated: true,
   },
   {
     id: "e2-3",
-    source: "2-prepareEnvironment",
-    target: "3-installWallet",
-    sourceHandle: "right-source",
-    targetHandle: "left-target",
+    source: "2-acquireHWW",
+    target: "3-prepareEnvironment",
+    sourceHandle: "bottom-source",
+    targetHandle: "top-target",
     animated: true,
   },
   {
     id: "e3-4",
-    source: "3-installWallet",
+    source: "3-prepareEnvironment",
     target: "4-createWallet",
-    sourceHandle: "bottom-source",
-    targetHandle: "top-target",
+    sourceHandle: "right-source",
+    targetHandle: "left-target",
     animated: true,
   },
   {

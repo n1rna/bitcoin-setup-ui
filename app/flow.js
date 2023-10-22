@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect } from "react";
 import ReactFlow, {
   addEdge,
-  ReactFlowProvider,
   Controls,
-  Panel,
   useNodesState,
   useEdgesState,
+  useReactFlow,
 } from "reactflow";
 
 import SwimlaneNode from "./nodes/swimlane";
@@ -22,9 +21,14 @@ const nodeTypes = {
 
 const OverviewFlow = () => {
   const { elements } = useGlobalContext();
+  const reactFlowInstance = useReactFlow();
 
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+  useEffect(() => {
+    reactFlowInstance && reactFlowInstance.fitView();
+  }, [reactFlowInstance, nodes])
 
   useEffect(() => {
     setNodes(elements.nodes);
@@ -38,7 +42,6 @@ const OverviewFlow = () => {
 
   return (
     <div className="flex-1 overflow-auto">
-      <ReactFlowProvider>
         <ReactFlow
           nodesDraggable={false}
           nodesConnectable={false}
@@ -61,7 +64,6 @@ const OverviewFlow = () => {
           {/* <Panel position="top-left">top-left</Panel> */}
           {/* <Background color="#fff" /> */}
         </ReactFlow>
-      </ReactFlowProvider>
     </div>
   );
 };

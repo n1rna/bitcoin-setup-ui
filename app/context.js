@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-import { nodes as setup1Nodes, edges as setup1Edges } from "./setup1-elements";
-import { nodes as setup2Nodes, edges as setup2Edges } from "./setup2-elements";
+import { nodes as setup1Nodes, edges as setup1Edges } from "./setups/setup1-elements";
+import { nodes as setup2Nodes, edges as setup2Edges } from "./setups/setup2-elements";
+import { nodes as setup3Nodes, edges as setup3Edges } from "./setups/setup3-elements";
 
 const GlobalContext = createContext({
   selectedSetup: undefined,
@@ -20,6 +21,10 @@ export const GlobalProvider = ({ children }) => {
     } else if (selectedSetup === "setup2") {
       setNodes(setup2Nodes);
       setEdges(setup2Edges);
+      
+    } else if (selectedSetup === "setup3") {
+      setNodes(setup3Nodes);
+      setEdges(setup3Edges);
     }
   }, [selectedSetup, setSelectedSetup, setNodes, setEdges]);
 

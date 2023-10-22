@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useMemo, useState } from "react";
 import { useReactFlow, useNodeId } from "reactflow";
 import { Card, CardHeader, CardBody, Divider, Button } from "@nextui-org/react";
-import { nodes as initialNodes } from "../setup1-elements";
+import { nodes as initialNodes } from "../setups/setup1-elements";
 import { FiEyeOff } from "react-icons/fi";
 import { useGlobalContext } from "../context";
 

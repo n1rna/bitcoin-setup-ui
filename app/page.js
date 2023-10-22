@@ -14,6 +14,7 @@ import CNavbar from "./navbar";
 import {
   ChakraProvider,
 } from "@chakra-ui/react";
+import { ReactFlowProvider } from "reactflow";
 
 
 export default function Home() {
@@ -22,10 +23,11 @@ export default function Home() {
       <NextUIProvider>
         <main className="text-foreground bg-background h-screen flex flex-col">
           <GlobalProvider>
-            <CNavbar />
-            {/* <SettingsAccordion /> */}
-            <Divider />
-            <OverviewFlow />
+            <ReactFlowProvider>
+              <CNavbar />
+              <Divider />
+              <OverviewFlow />
+            </ReactFlowProvider>
           </GlobalProvider>
         </main>
       </NextUIProvider>

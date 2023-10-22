@@ -70,16 +70,8 @@ export default memo(({ data, isConnectable, ...props }) => {
         </PopoverTrigger>
         <PopoverContent>
           <div className="px-1 py-2">
-            <div className="text-small font-bold">Links to related content</div>
-            <div className="text-tiny">
-              <a href="#">Link1</a>
-            </div>
-            <div className="text-tiny">
-              <a href="#">Link2</a>
-            </div>
-            <div className="text-tiny">
-              <a href="#">Link3</a>
-            </div>
+            <div className="text-small font-bold">{data.description}</div>
+            
           </div>
         </PopoverContent>
       </Popover>
