@@ -19,6 +19,7 @@ const addSwimlaneItem = (label, id, bgColor) => {
     className: "light",
     style: { width: SWIMLANES_WIDTH, height: SWIMLANES_HEIGHT },
     type: "swimlaneNode",
+    zIndex: 0,
   };
   Swimlanes.push(swimlane);
   return swimlane;
@@ -29,6 +30,7 @@ const defaultNodeProps = {
   extent: "parent",
   expandParent: true,
   style: { width: DEFAULT_NODE_WIDTH, height: DEFAULT_NODE_HEIGHT },
+  zIndex: 1,
 };
 
 const addActionStepItem = (id, label, x, y, lane, options) => {
@@ -50,24 +52,24 @@ const addEdge = () => {};
 const L_buyLane = addSwimlaneItem(
   "Buy/Acquire Bitcoin",
   "buyLane",
-  "rgba(192, 240, 62, 0.3)",
+  "rgba(221, 110, 66, 0.8)",
 );
 const L_preparEnvLane = addSwimlaneItem(
   "Prepare your environment",
   "prepareEnvironmentLane",
-  "rgba(200, 148, 255, 0.3)",
+  "rgba(232, 218, 178, 0.8)",
 );
 const L_setupWalletLane = addSwimlaneItem(
   "Setup your bitcoin wallet",
   "setupWalletLane",
-  "rgba(255, 15, 127, 0.3)",
+  "rgba(79, 109, 122, 0.8)",
 );
 const L_backupLane = addSwimlaneItem(
   "Backup",
   "backup",
-  "rgba(188, 255, 18, 0.3)",
+  "rgba(192, 214, 223, 0.8)",
 );
-const L_spendLane = addSwimlaneItem("Spend", "spend", "rgba(0, 255, 213, 0.3)");
+const L_spendLane = addSwimlaneItem("Spend", "spend", "rgba(234, 234, 234, 0.8)");
 
 export const nodes = [
   // Swimlanes
@@ -153,6 +155,12 @@ export const nodes = [
   },
 ];
 
+const defaultEdgeProps = {
+  animated: true,
+  zIndex: 2,
+  type: "smoothstep"
+}
+
 // Edges
 export const edges = [
   {
@@ -161,7 +169,7 @@ export const edges = [
     target: "2-acquireHWW",
     sourceHandle: "bottom-source",
     targetHandle: "top-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
   {
     id: "e2-3",
@@ -169,7 +177,7 @@ export const edges = [
     target: "3-prepareEnvironment",
     sourceHandle: "bottom-source",
     targetHandle: "top-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
   {
     id: "e3-4",
@@ -177,7 +185,7 @@ export const edges = [
     target: "4-createWallet",
     sourceHandle: "right-source",
     targetHandle: "left-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
   {
     id: "e4-5",
@@ -185,7 +193,7 @@ export const edges = [
     target: "5-reviewSetup",
     sourceHandle: "bottom-source",
     targetHandle: "top-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
   {
     id: "e5-6",
@@ -193,7 +201,7 @@ export const edges = [
     target: "6-wallet",
     sourceHandle: "bottom-source",
     targetHandle: "top-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
 
   {
@@ -202,7 +210,7 @@ export const edges = [
     target: "6-wallet",
     sourceHandle: "right-source",
     targetHandle: "left-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
   {
     id: "e02-6",
@@ -210,7 +218,7 @@ export const edges = [
     target: "6-wallet",
     sourceHandle: "right-source",
     targetHandle: "left-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
   {
     id: "e4-7",
@@ -218,7 +226,7 @@ export const edges = [
     target: "7-backupWallet",
     sourceHandle: "right-source",
     targetHandle: "left-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
   {
     id: "e6-8",
@@ -226,6 +234,6 @@ export const edges = [
     target: "8-spendBitcoin",
     sourceHandle: "right-source",
     targetHandle: "left-target",
-    animated: true,
+    ...defaultEdgeProps,
   },
 ];

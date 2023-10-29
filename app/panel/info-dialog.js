@@ -68,13 +68,13 @@ const InformationDialog = () => {
         <Button
           size="lg"
           isIconOnly
-          color="secondary"
           aria-label="Like"
           radius="full"
           onClick={openDialog}
           variant="shadow"
+          style={{backgroundColor: "rgba(109, 89, 122, 0.8)"}}
         >
-          <FiInfo />
+          <FiInfo color="white" />
         </Button>
       </Tooltip>
     </>

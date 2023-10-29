@@ -66,7 +66,7 @@ const ConfigurationDialog = () => {
               color="primary"
               aria-label="Like"
               radius="full"
-              variant="shadow"
+              style={{backgroundColor: "rgba(181, 101, 118, 0.8)"}}
             >
               <FiSettings />
             </Button>
