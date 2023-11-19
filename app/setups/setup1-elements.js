@@ -20,6 +20,7 @@ const addSwimlaneItem = (label, id, bgColor) => {
     style: { width: SWIMLANES_WIDTH, height: SWIMLANES_HEIGHT },
     type: "swimlaneNode",
     zIndex: 0,
+    selectable: false,
   };
   Swimlanes.push(swimlane);
   return swimlane;
@@ -106,14 +107,14 @@ export const nodes = [
   },
   {
     id: "3-installWallet",
-    data: { label: "Install a software wallet on your device", description: "The first step is to initialize your Bitcoin wallet setup." },
+    data: { fontSize: 12, label: "Install a software wallet on your device", description: "The first step is to initialize your Bitcoin wallet setup." },
     position: { x: 50, y: 100 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
   },
   {
     id: "4-createWallet",
-    data: { label: "Create a wallet (+ passphrase)", description: "Create keys and ensure their protection." },
+    data: { fontSize: 12, label: "Create a wallet (+ passphrase)", description: "Create keys and ensure their protection." },
     position: { x: 50, y: 180 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
@@ -134,7 +135,7 @@ export const nodes = [
   },
   {
     id: "7-backupWallet",
-    data: { label: "Backup seed words (+ passphrase)", description: "This step is vital in your setup. These words not only safeguard your funds but also provide a failsafe method to recover them using this secret phrase." },
+    data: { fontSize: 12, label: "Backup seed words (+ passphrase)", description: "This step is vital in your setup. These words not only safeguard your funds but also provide a failsafe method to recover them using this secret phrase." },
     position: { x: 50, y: 180 },
     parentNode: L_backupLane.id,
     ...defaultNodeProps,
@@ -151,7 +152,8 @@ export const nodes = [
 const defaultEdgeProps = {
   animated: true,
   zIndex: 2,
-  type: "smoothstep"
+  type: "cEdge",
+  selected: true
 }
 
 // Edges

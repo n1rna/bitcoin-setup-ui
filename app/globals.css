@@ -9,3 +9,7 @@
 .blur-edge {
   filter: blur(2px);
 }
+
+.react-flow__edge	{
+  color:black;
+}

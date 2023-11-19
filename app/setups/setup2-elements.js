@@ -4,7 +4,7 @@ export const SWIMLANES_WIDTH_COLLAPSED = 100;
 export const SWIMLANES_HEIGHT = 600;
 
 export const DEFAULT_NODE_WIDTH = 200;
-export const DEFAULT_NODE_HEIGHT = 48;
+export const DEFAULT_NODE_HEIGHT = 56;
 export const DEFAULT_NODE_MARGIN = 20;
 
 const Swimlanes = [];
@@ -20,6 +20,7 @@ const addSwimlaneItem = (label, id, bgColor) => {
     style: { width: SWIMLANES_WIDTH, height: SWIMLANES_HEIGHT },
     type: "swimlaneNode",
     zIndex: 0,
+    selectable: false
   };
   Swimlanes.push(swimlane);
   return swimlane;
@@ -78,77 +79,70 @@ export const nodes = [
   // -- Nodes
   {
     id: "0-buyBitcoin",
-    data: { label: "Buy Bitcoin" },
+    data: { label: "Buy Bitcoin", description: "The ways to acquire Bitcoin include mining, purchasing, or earning it" },
     position: { x: 50, y: 360 },
     parentNode: L_buyLane.id,
     ...defaultNodeProps,
   },
   {
     id: "0-acquireBitcoin",
-    data: { label: "Acquire Bitcoin" },
+    data: { label: "Acquire Bitcoin", description: "You can own Bitcoin by buying from exchanges or through peer-to-peer (P2P) transactions." },
     position: { x: 50, y: 440 },
     parentNode: L_buyLane.id,
     ...defaultNodeProps,
   },
   {
     id: "1-chooseDevice",
-    data: { label: "Choose a device" },
+    data: { label: "Choose a device", description: "Your preferred method of accessing and using your Bitcoin funds will determine the type of device, operating system, and choice between hardware or software wallets." },
     position: { x: 50, y: 100 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
   {
     id: "2-acquireHWW",
-    data: { label: "Acquire a hardware wallet" },
+    data: { label: "Acquire a hardware wallet", description: "Purchase the hardware wallets you want to include in this setup. Order them directly from the manufacturer. Do NOT buy hardware wallets from third parties. Buy only from the official source to avoid tampering risks; third-party sellers aren't worth the minor savings. If a wallet arrives pre-configured or with a seed phrase, contact support—don't use it. Here is a list of hardware wallet vendors with links to their official website (LINK)." },
     position: { x: 50, y: 180 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
   {
     id: "3-prepareEnvironment",
-    data: { label: "Prepare your environment" },
+    data: { label: "Prepare your environment", description: "Ensure that you have a secure location and digital setup for a safe Bitcoin wallet installation, transactions, and other digital activities."  },
     position: { x: 50, y: 260 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
-  // {
-  //   id: "3-installWallet",
-  //   data: { label: "Install a software wallet on your device" },
-  //   position: { x: 50, y: 100 },
-  //   parentNode: L_setupWalletLane.id,
-  //   ...defaultNodeProps,
-  // },
   {
     id: "4-createWallet",
-    data: { label: "Create a wallet (+ passphrase)" },
+    data: { fontSize: 12, label: "Create a wallet (+ passphrase)", description: "Create keys and ensure their protection." },
     position: { x: 50, y: 180 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
   },
   {
     id: "5-reviewSetup",
-    data: { label: "Review setup" },
+    data: { label: "Review setup", description: "Make sure your Bitcoin setup is ready and secure for use." },
     position: { x: 50, y: 260 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
   },
   {
     id: "6-wallet",
-    data: { label: "Bitcoin Wallet" },
+    data: { label: "Bitcoin Wallet", description: "You're all set up for now. Check out the next steps to learn more and take further action." },
     position: { x: 50, y: 400 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
   },
   {
     id: "7-backupWallet",
-    data: { label: "Backup seed words (+ passphrase)" },
+    data: { fontSize: 12, label: "Backup seed words (+ passphrase)", description: "This step is vital in your setup. These words not only safeguard your funds but also provide a failsafe method to recover them using this secret phrase." },
     position: { x: 50, y: 180 },
     parentNode: L_backupLane.id,
     ...defaultNodeProps,
   },
   {
     id: "8-spendBitcoin",
-    data: { label: "Spend your bitcoin" },
+    data: { label: "Spend your bitcoin", description: "You can use your Bitcoin for purchases or investments." },
     position: { x: 50, y: 400 },
     parentNode: L_spendLane.id,
     ...defaultNodeProps,
@@ -158,7 +152,8 @@ export const nodes = [
 const defaultEdgeProps = {
   animated: true,
   zIndex: 2,
-  type: "smoothstep"
+  type: "cEdge",
+  selected: true
 }
 
 // Edges

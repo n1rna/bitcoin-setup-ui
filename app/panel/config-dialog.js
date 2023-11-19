@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import {
   Popover,
   PopoverContent,
@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 import { FiSettings } from "react-icons/fi";
 import { useGlobalContext } from "../context";
+import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 
 export const availableSetups = [
   {
@@ -32,11 +33,31 @@ export const availableSetups = [
 ];
 
 const SetupSelector = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+ 
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams)
+      params.set(name, value)
+ 
+      return params.toString()
+    },
+    [searchParams]
+  )
+
   const { selectedSetup, setSelectedSetup } = useGlobalContext();
 
   const handleSetupSelection = (e) => {
-    setSelectedSetup(e.target.value);
+    router.push(pathname + '?' + createQueryString('setup', e.target.value))
   };
+
+  useEffect(() => {
+    if (searchParams.get("setup")) {
+      setSelectedSetup(searchParams.get("setup"))
+    }
+  }, [searchParams, setSelectedSetup])
 
   return (
     <Select

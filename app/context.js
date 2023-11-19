@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 
 import { nodes as setup1Nodes, edges as setup1Edges } from "./setups/setup1-elements";
 import { nodes as setup2Nodes, edges as setup2Edges } from "./setups/setup2-elements";
@@ -10,7 +11,10 @@ const GlobalContext = createContext({
 });
 
 export const GlobalProvider = ({ children }) => {
-  const [selectedSetup, setSelectedSetup] = useState(() => "setup1");
+  const searchParams = useSearchParams();
+
+  const [selectedSetup, setSelectedSetup] = useState(() => searchParams.get("setup") || "setup1");
+  
   const [nodes, setNodes] = useState(() => []);
   const [edges, setEdges] = useState(() => []);
 

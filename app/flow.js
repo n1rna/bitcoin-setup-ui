@@ -9,6 +9,7 @@ import ReactFlow, {
 
 import SwimlaneNode from "./nodes/swimlane";
 import DefaultNode from "./nodes/default";
+import CustomEdge from "./nodes/cedge";
 import FlowPanel from "./panel";
 import { useGlobalContext } from "./context";
 
@@ -18,6 +19,12 @@ const nodeTypes = {
   swimlaneNode: SwimlaneNode,
   actionStepNode: DefaultNode,
 };
+
+ 
+const edgeTypes = {
+  cEdge: CustomEdge
+}
+ 
 
 const OverviewFlow = () => {
   const { elements } = useGlobalContext();
@@ -45,7 +52,7 @@ const OverviewFlow = () => {
         <ReactFlow
           nodesDraggable={false}
           nodesConnectable={false}
-          // zoomOnDoubleClick={false}
+          zoomOnDoubleClick={false}
           // zoomOnScroll={false}
           // panOnDrag={false}
           // elementsSelectable={false}
@@ -58,6 +65,7 @@ const OverviewFlow = () => {
           attributionPosition="top-right"
           className="react-flow-subflows-example"
           nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes}
         >
           <Controls />
           <FlowPanel />

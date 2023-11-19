@@ -4,7 +4,7 @@ export const SWIMLANES_WIDTH_COLLAPSED = 100;
 export const SWIMLANES_HEIGHT = 600;
 
 export const DEFAULT_NODE_WIDTH = 200;
-export const DEFAULT_NODE_HEIGHT = 48;
+export const DEFAULT_NODE_HEIGHT = 56;
 export const DEFAULT_NODE_MARGIN = 20;
 
 const Swimlanes = [];
@@ -20,6 +20,7 @@ const addSwimlaneItem = (label, id, bgColor) => {
     style: { width: SWIMLANES_WIDTH, height: SWIMLANES_HEIGHT },
     type: "swimlaneNode",
     zIndex: 0,
+    selectable: false
   };
   Swimlanes.push(swimlane);
   return swimlane;
@@ -46,7 +47,7 @@ const addActionStepItem = (id, label, x, y, lane, options) => {
   return node;
 };
 
-const addEdge = () => {};
+const addEdge = () => { };
 
 // Swimlanes
 const L_preparEnvLane = addSwimlaneItem(
@@ -83,63 +84,63 @@ export const nodes = [
   // -- Nodes
   {
     id: "0-buyBitcoin",
-    data: { label: "Buy Bitcoin" },
+    data: { label: "Buy Bitcoin", description: "The ways to acquire Bitcoin include mining, purchasing, or earning it" },
     position: { x: 50, y: 120 },
     parentNode: L_buyLane.id,
     ...defaultNodeProps,
   },
   {
     id: "0-acquireBitcoin",
-    data: { label: "Acquire Bitcoin" },
+    data: { label: "Acquire Bitcoin", description: "You can own Bitcoin by buying from exchanges or through peer-to-peer (P2P) transactions." },
     position: { x: 50, y: 200 },
     parentNode: L_buyLane.id,
     ...defaultNodeProps,
   },
   {
     id: "1-chooseDevice",
-    data: { label: "Choose a device" },
+    data: { label: "Choose a device", description: "Your preferred method of accessing and using your Bitcoin funds will determine the type of device, operating system, and choice between hardware or software wallets." },
     position: { x: 50, y: 100 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
   {
     id: "2-acquireHWW",
-    data: { label: "Acquire a hardware wallet(s)" },
+    data: { label: "Acquire a hardware wallet", description: "Purchase the hardware wallets you want to include in this setup. Order them directly from the manufacturer. Do NOT buy hardware wallets from third parties. Buy only from the official source to avoid tampering risks; third-party sellers aren't worth the minor savings. If a wallet arrives pre-configured or with a seed phrase, contact support—don't use it. Here is a list of hardware wallet vendors with links to their official website (LINK)." },
     position: { x: 50, y: 180 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
   {
     id: "3-prepareEnvironment",
-    data: { label: "Prepare your environment" },
+    data: { label: "Prepare your environment", description: "Prepare your working environment by ensure you are in a private place with no cameras around. Prepare your main device by ensuring it is clean and does not contain malware." },
     position: { x: 50, y: 260 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
   {
     id: "4-setupEachParty",
-    data: { label: "Setup each party" },
+    data: { label: "Setup each party", description: "Generate a seed and setup a single signature wallet on each of the devices." },
     position: { x: 50, y: 340 },
     parentNode: L_preparEnvLane.id,
     ...defaultNodeProps,
   },
   {
     id: "51-createWallet1",
-    data: { label: "Create a wallet 1 (+ passphrase)" },
+    data: { fontSize: 12, label: "Create wallet #1 (+ passphrase)", description: "Create wallet 1(2,3): Use your hardware wallet device or software wallet app (signer 1(2,3)) to create a new wallet. You can follow instructions in our singlesig setup guide. Store the seed phrase (and passphrase if any) in your medium of choice (e.g., paper is fine for this step. Then, we will make proper backups)." },
     position: { x: 50, y: 260 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
   },
   {
     id: "52-createWallet2",
-    data: { label: "Create a wallet 2 (+ passphrase)" },
+    data: { fontSize: 12, label: "Create wallet #2 (+ passphrase)", description: "Create wallet 1(2,3): Use your hardware wallet device or software wallet app (signer 1(2,3)) to create a new wallet. You can follow instructions in our singlesig setup guide. Store the seed phrase (and passphrase if any) in your medium of choice (e.g., paper is fine for this step. Then, we will make proper backups)." },
     position: { x: 50, y: 340 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
   },
   {
     id: "53-createWallet3",
-    data: { label: "Create a wallet 3 (+ passphrase)" },
+    data: { fontSize: 12, label: "Create wallet #3 (+ passphrase)", description: "Create wallet 1(2,3): Use your hardware wallet device or software wallet app (signer 1(2,3)) to create a new wallet. You can follow instructions in our singlesig setup guide. Store the seed phrase (and passphrase if any) in your medium of choice (e.g., paper is fine for this step. Then, we will make proper backups)." },
     position: { x: 50, y: 420 },
     parentNode: L_setupWalletLane.id,
     ...defaultNodeProps,
@@ -147,29 +148,28 @@ export const nodes = [
 
   {
     id: "81-backupWallet1",
-    data: { label: "Backup seed words 1 (+ passphrase)" },
+    data: { fontSize: 11, label: "Backup seed words #1 (+ passphrase)", description: "Back up your seed phrase 1 (and pass phrase 1 if any) secure. This is a crucial part of the setup and needs careful consideration. A metal plate is a good choice but not your only option. You should also choose a variety of secure locations to store the backups. See our seed backup guide for detailed instructions (LINK)." },
     position: { x: 50, y: 260 },
     parentNode: L_backupLane.id,
     ...defaultNodeProps,
   },
   {
     id: "82-backupWallet2",
-    data: { label: "Backup seed words 2 (+ passphrase)" },
+    data: { fontSize: 11, label: "Backup seed words #2 (+ passphrase)", description: "Back up your seed phrase 1 (and pass phrase 1 if any) secure. This is a crucial part of the setup and needs careful consideration. A metal plate is a good choice but not your only option. You should also choose a variety of secure locations to store the backups. See our seed backup guide for detailed instructions (LINK)." },
     position: { x: 50, y: 340 },
     parentNode: L_backupLane.id,
     ...defaultNodeProps,
   },
   {
     id: "83-backupWallet3",
-    data: { label: "Backup seed words 3 (+ passphrase)" },
+    data: { fontSize: 11, label: "Backup seed words #3 (+ passphrase)", description: "Back up your seed phrase 1 (and pass phrase 1 if any) secure. This is a crucial part of the setup and needs careful consideration. A metal plate is a good choice but not your only option. You should also choose a variety of secure locations to store the backups. See our seed backup guide for detailed instructions (LINK)." },
     position: { x: 50, y: 420 },
     parentNode: L_backupLane.id,
     ...defaultNodeProps,
   },
-
   {
     id: "6-wallet",
-    data: { label: "Bitcoin Wallet" },
+    data: { label: "Bitcoin Wallet", description: "Build a multisig wallet on your coordinator software. Follow the vendors’ instructions for importing the individual wallets you built earlier using your signing devices. Then use the coordinator software to generate a multisig wallet using all these singlesig wallets. Back up the descriptors related to your multisig wallet usually in the form of a pdf file." },
     position: { x: 50, y: 340 },
     parentNode: L_setupMultiSigEnv.id,
     ...defaultNodeProps,
@@ -186,7 +186,8 @@ export const nodes = [
 const defaultEdgeProps = {
   animated: true,
   zIndex: 2,
-  type: "smoothstep"
+  type: "cEdge",
+  selected: true
 }
 
 // Edges
